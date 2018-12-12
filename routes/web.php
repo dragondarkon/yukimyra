@@ -14,10 +14,10 @@
 Route::get('/', function () {
     return view('welcome');
 });
-
-Route::get('/blog','PostsController@index');
-Route::get('/blog/{post}', 'PostsController@show');
-
+Route::get('/blog','PostsController@index')->name('blog');
+Route::view('/blog/create','post.create')->middleware('auth');
+Route::get('/blog/{post}','PostsController@show');
+Route::post('/blog/post/create','PostsController@store');
 Auth::routes();
-
+Route::post('/blog/{post}/comment','CommentController@store')->name('addcomment');
 Route::get('/home', 'HomeController@index')->name('home');
