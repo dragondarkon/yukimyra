@@ -4,11 +4,11 @@
 <div class="container">
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
-            <div class="panel panel-default">
-                <div class="panel-heading"><h1>{{ $post->title}}</h1> 
+            <div class="card">
+                <div class="card-header"><h1>{{ $post->title}}</h1> 
                 post by <a href="#"><h4>{{ $post->creator->name }}</h4></a></div>
 
-                <div class="panel-body">
+                <div class="card-body">
                    <article>
                        <div class="body">{{ $post->body }}</div>
                    </article>
@@ -19,13 +19,13 @@
       <div class="row">
         <div class="col-md-8 col-md-offset-2">
            @foreach($post->comment as $comment)
-            <div class="panel panel-default">
-                <div class="panel-heading">
+            <div class="card">
+                <div class="card-header">
                     {{ $comment->creator->name }} comment since
                     {{ $comment->created_at->diffForHumans() }}
-                    </div>
+                </div>
 
-                <div class="panel-body">
+                <div class="card-body">
                    <article>
                        <div class="body">{{ $comment->body }}</div>
                    </article>
@@ -34,6 +34,7 @@
             @endforeach
         </div>
     </div>
+    <br>
    @if (auth()->check())
              <div class="row">
                  <div class="col-md-8 col-md-offset-2">

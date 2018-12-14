@@ -18,6 +18,8 @@ Route::get('/blog','PostsController@index')->name('blog');
 Route::view('/blog/create','post.create')->middleware('auth');
 Route::get('/blog/{post}','PostsController@show');
 Route::post('/blog/post/create','PostsController@store');
+Route::get('/blog/{post}/edit','PostsController@edit');
+Route::post('/blog/{post}','PostsController@update');
 Auth::routes();
 Route::post('/blog/{post}/comment','CommentController@store')->name('addcomment');
 Route::get('/home', 'HomeController@index')->name('home');

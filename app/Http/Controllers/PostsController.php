@@ -25,4 +25,20 @@ class PostsController extends Controller
         ]);
      return redirect('blog/'.$post->id);
     }
+
+    public function edit($id)
+    {
+        $post = Post::find($id);
+        return view('post.edit', compact('post'));
+    }
+
+    public function update(Request $request, $id)
+    {
+        $post = Post::find($id);
+        $post->title = request('title');
+        $post->body = request('body');
+        $post->save();
+        
+        return redirect('blog/'.$post->id);
+    }
 }
