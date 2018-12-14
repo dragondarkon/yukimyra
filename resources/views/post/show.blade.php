@@ -5,7 +5,7 @@
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
             <div class="card">
-                <div class="card-header"><h1>{{ $post->title}}</h1> 
+                <div class="card-header"><h1>{{ $post->title}} <a class="btn btn-primary" href="{{ action('PostsController@edit',$post->id) }}"> Edit</a></h1> 
                 post by <a href="#"><h4>{{ $post->creator->name }}</h4></a></div>
 
                 <div class="card-body">
@@ -24,7 +24,6 @@
                     {{ $comment->creator->name }} comment since
                     {{ $comment->created_at->diffForHumans() }}
                 </div>
-
                 <div class="card-body">
                    <article>
                        <div class="body">{{ $comment->body }}</div>
